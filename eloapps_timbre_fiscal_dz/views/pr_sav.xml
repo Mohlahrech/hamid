@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <template id="report_invoice_page_pdr_timbre" inherit_id="pdr.report_invoice_page">
+            <xpath expr="//table[tr/td[contains(text(), 'Total hors-taxe :')]]" position="replace">
+                <!-- Your custom table code here -->
+                 <table style="font-size:14px;width:100%;">
+                        <div style="border: 1px solid black; margin: 1px;width:100%;"></div>
+                        <br/>
+                        <tr>
+                            <td style="border: 1pt solid white;float: left;">Total hors-taxe :</td>
+                            <td style="border: 1pt solid white;float: right;">
+                                <div class="text-nowrap">
+                                    <span
+                                            t-esc="'{:,.2f}'.format(doc.amount_untaxed- doc.amount_timbre).replace(',', ' ').replace('.', ',')"/>
+                                    <span t-field="doc.currency_id.symbol"/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+            </xpath>
+        </template>
+
+        <template id="report_invoice_page_sav_timbre" inherit_id="bi_car_repair_management.report_invoice_sav_page">
+            <xpath expr="//table[tr/td[contains(text(), 'Total hors-taxe :')]]" position="replace">
+                <!-- Your custom table code here -->
+                 <table style="font-size:14px;width:100%;">
+                        <div style="border: 1px solid black; margin: 1px;width:100%;"></div>
+                        <br/>
+                        <tr>
+                            <td style="border: 1pt solid white;float: left;">Total hors-taxe :</td>
+                            <td style="border: 1pt solid white;float: right;">
+                                <div class="text-nowrap">
+                                    <span
+                                            t-esc="'{:,.2f}'.format(doc.amount_untaxed- doc.amount_timbre).replace(',', ' ').replace('.', ',')"/>
+                                    <span t-field="doc.currency_id.symbol"/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+            </xpath>
+        </template>
+
+
+
+    </data>
+
+</odoo>
